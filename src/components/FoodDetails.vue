@@ -15,8 +15,8 @@
                          <h5 class="my-4 fw-600">Rating: {{ details.rating }}</h5>
                          <div>
                             <button v-on:click="goToCart" class="btn btn-primary">Go to Cart</button>
-                            <button class="btn btn-success">Add Item </button> 
-                            <button class="btn btn-danger">Remove Item</button>
+                            <button v-on:click="addToCart" class="btn btn-success">Add Item </button> 
+                            <button v-on:click="removeFromCart" class="btn btn-danger">Remove Item</button>
                         </div>
                     </div>
                 </div>
@@ -43,13 +43,20 @@
         methods:{
             goToCart(){
                 this.$router.push('/cart');
+            },
+            addToCart(){
+                // this.$store.commit("cardItemCountIncrement")
+                this.$store.dispatch("addToCart", this.details)
+            },
+            removeFromCart(){
+                this.$store.dispatch("removeFromCart", this.details.id)
             }
         },
         created(){
-            if(this.$route.params.id !== undefined)
+            if(this.$route.params.id != undefined)
                 localStorage.setItem("details", JSON.stringify(this.$route.params))
         },
-        mounter(){
+        mounted(){
             this.details = JSON.parse(localStorage.getItem("details"))
         }
     };

@@ -32,16 +32,54 @@ export default new Vuex.Store({
       {id: 8, name: 'Vegetable Soup', price: 17.90, url: soup, description: 'A simple soup, but with great impact', rating: 4.0},
       {id: 9, name: 'Tacos', price: 10.00, url: tacos, description: 'The original tacos, with a specially spiced meat', rating: 4.4},
     ],
-    cartItemCount: 0
+    cartItemCount: 0,
+    cartItems: []
   },
   getters: {
     
   },
   mutations: {
-    
+    addToCart(state, payload){
+
+      let item = payload;
+      item = {...item, quantity: 1}
+      if(state.cartItems.length > 0){
+        let itemAlreadyInCart = state.cartItems.some(i => i.id === item.id)
+        if(itemAlreadyInCart){
+          let itemIndex = state.cartItems.findIndex(el => el.id === item.id)
+          state.cartItems[itemIndex]['quantity'] += 1;
+        }else{
+          state.cartItems.push(item)
+        }
+      }else{
+        state.cartItems.push(item)
+      }
+      state.cartItemCount++;
+      console.log(state.cartItems)
+    },
+    removeItem(state, payload){
+
+      let item = payload;
+      let isInCart = state.cartItems.some(i => i.id === item)
+      if(isInCart){
+        let itemIndex = state.cartItems.findIndex(el => el.id === item)
+        state.cartItems[itemIndex]['quantity'] > 1
+          ?state.cartItems[itemIndex]['quantity'] -= 1
+          :state.cartItems.pop(itemIndex)
+        state.cartItemCount--
+      }else{
+        alert("This item is not in your cart")
+      }
+      console.log(state.cartItems);
+    }
   },
   actions: {
-    
+    addToCart: (context, payload) => {
+      context.commit("addToCart", payload)
+    },
+    removeFromCart: (context,payload) => {
+      context.commit("removeItem", payload)
+    }
   },
   modules: {
   }
