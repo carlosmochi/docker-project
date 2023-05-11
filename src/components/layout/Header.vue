@@ -1,11 +1,11 @@
 <template>
     <header>
         <div class="header">
-            <div class="logo">
+            <div v-on:click="goTo('home')" class="logo">
                 <h4 class="sweet">Sweet Dishes</h4>
                 <img src="../../assets/breakfast.jpg" width="45px" height="45px" style="margin-left: 10px; background-color: lightgray;">
             </div>
-            <div class="d-flex cart">
+            <div v-on:click="goTo('carts')" class="d-flex cart">
                 <i class="fa -fa-shopping-cart cart-icon"></i>
                 <span class="cart-count">{{ count }}</span>
 
@@ -17,11 +17,28 @@
 </template>
 
 <script>
+import router from '@/router/router';
+
     export default {
         name: "Header",
         computed:{
             count(){
                 return this.$store.state.cartItemCount;
+            }
+        },
+        methods:{
+            goTo(page){
+                switch(page){
+                    case "home":
+                        router.push("/")
+                        break;
+                    case "cart":
+                        router.push("cart")
+                        break;
+                    default:
+                        alert("Invalid page access")
+                        break;
+                }
             }
         }
     };
