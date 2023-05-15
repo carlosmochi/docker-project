@@ -3,10 +3,11 @@
         <div class="header">
             <div v-on:click="goTo('home')" class="logo">
                 <h4 class="sweet">Sweet Dishes</h4>
-                <img src="../../assets/breakfast.jpg" width="45px" height="45px" style="margin-left: 10px; background-color: lightgray;">
+                <img src="../../assets/breakfast.png" width="45px" height="45px" style="margin-left: 10px; background-color: lightgray;">
             </div>
-            <div v-on:click="goTo('carts')" class="d-flex cart">
-                <i class="fa -fa-shopping-cart cart-icon"></i>
+            <div v-on:click="goTo('cart')" class="d-flex cart">
+                <span class="material-symbols-outlined">shopping_cart</span>
+                <!-- <i class="material-symbols-outlined cart-icon"></i> -->
                 <span class="cart-count">{{ count }}</span>
 
                 <h5 class="login">Login</h5> 
@@ -87,5 +88,14 @@ cursor: pointer;
 .register{
     font-weight: 600;
     margin-top: 6px;
+}
+.material-symbols-outlined { 
+    display: flex;
+  align-items: center;
+    font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
 }
 </style>

@@ -36,7 +36,13 @@ export default new Vuex.Store({
     cartItems: []
   },
   getters: {
-    
+    totalPrice(state){
+      let price = 0
+      state.cartItems.map(item => {
+        price += (item.price * item.quantity)
+      })
+      return price;
+    }
   },
   mutations: {
     addToCart(state, payload){
