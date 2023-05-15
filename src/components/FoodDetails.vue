@@ -2,7 +2,7 @@
     <div class="d-flex food-details-outer">
         <Header></Header>
         <div class="food-details">
-            <div class="continer mb-5">
+            <div class="container mb-5">
                 <h4 class="my-4 fw-600">Add Item to Cart</h4> 
                 <div class=" row">
                     <div class="col-md-4" style="cursor: pointer">
@@ -74,4 +74,9 @@
 .fw-600 {
     font-weight: 600
 }
+.btn{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 </style>

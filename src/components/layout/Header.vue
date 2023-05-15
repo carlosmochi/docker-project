@@ -7,7 +7,6 @@
             </div>
             <div v-on:click="goTo('cart')" class="d-flex cart">
                 <span class="material-symbols-outlined">shopping_cart</span>
-                <!-- <i class="material-symbols-outlined cart-icon"></i> -->
                 <span class="cart-count">{{ count }}</span>
 
                 <h5 class="login">Login</h5> 
@@ -76,7 +75,7 @@ import router from '@/router/router';
 .cart{
     width: 300px; 
     justify-content:space-evenly; 
-    padding-top: 3px
+    padding-top: 3px;
 }
 .cart-icon {
 line-height: 45px; 
@@ -91,7 +90,8 @@ cursor: pointer;
 }
 .material-symbols-outlined { 
     display: flex;
-  align-items: center;
+    align-items: center;
+    cursor: pointer;
     font-variation-settings:
   'FILL' 0,
   'wght' 400,
